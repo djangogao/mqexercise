@@ -52,7 +52,7 @@ public class LRUCacheImpl<K,V> extends LruCache<K,V> {
             head = n.next;
         }
 
-        if(n.next!=null){
+        if(n.next != null){
             n.next.pre = n.pre;
         }else{
             end = n.pre;
@@ -64,13 +64,13 @@ public class LRUCacheImpl<K,V> extends LruCache<K,V> {
         n.next = head;//head原位置应该是指向第一个元素，现在把这个位置给n.next
         n.pre = null;
 
-        if(head!=null){
+        if(head != null){
             head.pre = n;
         }
 
         head = n;
         //判断头尾是够为空
-        if(end ==null) {
+        if(end == null) {
             end = head;
         }
     }
