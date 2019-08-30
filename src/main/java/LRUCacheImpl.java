@@ -22,10 +22,14 @@ public class LRUCacheImpl<K,V> extends LruCache<K,V> {
     }
 
     public V get(K key) {
+        // 查询缓存有没有
         V v1 = getValue(key);
+        // 缓存内不存在
         if(v1 == null) {
+            // 查询lowSpeedStorage(类似于磁盘)
             V v2 = lowSpeedStorage.get(key);
             if(v2 != null) {
+                // lowSpeedStorage存在, 将它放入缓存
                 set(key, v2);
             }
             return v2;
